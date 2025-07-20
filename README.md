@@ -1,27 +1,79 @@
-# SmartShoppingCart
+# Smart Shopping Cart 🛒
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+A modern shopping cart built with **Angular 18** and **Tailwind CSS** featuring dynamic pricing and smart discounts.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- 🛍️ Add/remove items from cart
+- 💰 Dynamic pricing with tax calculations
+- 🎯 Smart discounts (bulk, loyalty, item-specific)
+- 📱 Responsive design
+- ⚡ Real-time updates
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 18 (Standalone Components)
+- Tailwind CSS
+- TypeScript
+- Angular Signals
 
-## Build
+## Quick Start
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
+- Node.js (v18+)
+- Angular CLI (v18+)
 
-## Running unit tests
+### Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+# Create project
+ng new smart-shopping-cart --routing --style=css --standalone --ssr=false
+cd smart-shopping-cart
 
-## Running end-to-end tests
+# Install Tailwind CSS
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Generate components
+ng generate component components/shopping-cart --standalone --skip-tests
+ng generate component components/product-card --standalone --skip-tests
+ng generate component components/cart-item --standalone --skip-tests
+ng generate service services/shopping-cart --skip-tests
+mkdir src/app/models
 
-## Further help
+# Copy the provided code files to their respective locations
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Run the app
+ng serve
+```
+
+Open `http://localhost:4200` in your browser.
+
+## How It Works
+
+### Tax Rates
+- **Electronics**: 10% tax
+- **Books**: Tax-free
+- **Clothing**: 5% tax
+
+### Discounts (applied in order)
+1. **Electronics Bulk**: 15% off when buying 2+ electronics
+2. **Cart Bulk**: 10% off when total > $200
+3. **Loyalty**: 5% (Bronze), 10% (Silver), 15% (Gold)
+
+## Project Structure
+
+```
+src/app/
+├── components/
+│   ├── shopping-cart/
+│   ├── product-card/
+│   └── cart-item/
+├── models/
+├── services/
+└── main.ts
+```
+
+---
+
+**Built with Angular 18 + Tailwind CSS**
