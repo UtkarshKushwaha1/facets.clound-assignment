@@ -1,0 +1,59 @@
+<!-- src/app/components/cart-item/cart-item.component.html -->
+<div class="bg-white border border-gray-200 rounded-xl p-5 transition-all duration-300 hover:border-gray-300 hover:shadow-md relative overflow-hidden">
+  <!-- Category accent bar -->
+  <div class="absolute top-0 left-0 right-0 h-1" [ngClass]="categoryAccentClass()"></div>
+
+  <div class="flex justify-between items-start mb-4">
+    <div class="flex-1">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ item().product.name }}</h3>
+      <div class="flex flex-col gap-1">
+        <span class="inline-block px-2 py-1 text-white text-xs font-medium uppercase tracking-wide rounded-xl w-fit" [ngClass]="categoryBadgeClass()">
+          {{ item().product.category }}
+        </span>
+        <span class="text-sm text-gray-600 font-medium">
+          {{ item().quantity }}x &#64; {{ formatCurrency(item().product.price) }}
+        </span>
+        <span class="text-xs text-gray-500">
+          {{ getTaxInfo() }}
+        </span>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="bg-red-500 text-white border-0 w-8 h-8 rounded-full cursor-pointer flex items-center justify-center text-xl font-bold transition-all duration-200 hover:bg-red-600 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 flex-shrink-0"
+      (click)="removeItem()"
+      [attr.aria-label]="'Remove ' + item().product.name + ' from cart'">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <div class="border-t border-gray-100 pt-4">
+    <div class="space-y-2">
+      <div class="flex justify-between items-center">
+        <span class="text-sm text-gray-600">Base Price:</span>
+        <span class="text-sm font-medium text-gray-900">{{ formatCurrency(item().product.price) }}</span>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <span class="text-sm text-gray-600">Tax:</span>
+        <span class="text-sm font-medium text-gray-900">{{ formatCurrency(item().taxAmount) }}</span>
+      </div>
+
+      <div *ngIf="item().itemDiscount > 0" class="flex justify-between items-center text-red-600">
+        <span class="text-sm font-medium">Item Discount:</span>
+        <span class="text-sm font-semibold">-{{ formatCurrency(item().itemDiscount) }}</span>
+      </div>
+
+      <div class="flex justify-between items-center border-t border-gray-100 mt-3 pt-3 text-gray-900">
+        <span class="text-sm font-semibold">Item Total:</span>
+        <span class="text-lg font-bold">{{ formatCurrency(item().totalPrice) }}</span>
+      </div>
+    </div>
+
+    <div *ngIf="item().itemDiscount > 0" class="mt-4 text-center">
+      <span class="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide animate-pulse">
+        🎉 Electronics Bulk Discount Applied!
+      </span>
+    </div>
+  </div>
+</div>
