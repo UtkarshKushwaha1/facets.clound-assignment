@@ -23,26 +23,7 @@ A modern shopping cart built with **Angular 18** and **Tailwind CSS** featuring 
 - Node.js (v18+)
 - Angular CLI (v18+)
 
-### Installation
-
-```bash
-# Create project
-ng new smart-shopping-cart --routing --style=css --standalone --ssr=false
-cd smart-shopping-cart
-
-# Install Tailwind CSS
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-
-# Generate components
-ng generate component components/shopping-cart --standalone --skip-tests
-ng generate component components/product-card --standalone --skip-tests
-ng generate component components/cart-item --standalone --skip-tests
-ng generate service services/shopping-cart --skip-tests
-mkdir src/app/models
-
-# Copy the provided code files to their respective locations
-
+```
 # Run the app
 ng serve
 ```
